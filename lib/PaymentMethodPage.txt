@@ -1,0 +1,284 @@
+import 'package:flutter/material.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:venue_drive/reservation.dart';
+
+class PaymentMethodPage extends StatefulWidget {
+  const PaymentMethodPage({Key? key}) : super(key: key);
+
+  @override
+  State<PaymentMethodPage> createState() => _PaymentMethodPageState();
+}
+
+class _PaymentMethodPageState extends State<PaymentMethodPage> {
+  int selectedRadio = 1;
+  Razorpay razorpay = Razorpay();
+
+  @override
+  void initState() {
+    super.initState();
+    initializeRazorpay();
+  }
+
+  @override
+  void dispose() {
+    razorpay.clear();
+    super.dispose();
+  }
+
+  void initializeRazorpay() {
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, handlePaymentSuccess);
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, handlePaymentError);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handleExternalWallet);
+  }
+
+  void handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Show payment success popup
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Payment Successful'),
+        content: const Text('Your payment was successful.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Close the dialog
+              // Navigate to ticket booking page
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const reservationScreen()),
+              );
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void handlePaymentError(PaymentFailureResponse response) {
+    // Show payment error popup
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Payment Error'),
+        content: Text('An error occurred during payment: ${response.message}'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Close the dialog
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void handleExternalWallet(ExternalWalletResponse response) {
+    // Handle external wallet payment
+    // You can implement this if you want to support external wallet payments
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF4E1B97),
+        title: const Text('Payment Method'),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height - 100,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Select the payment method you want to use.',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedRadio = 1;
+                      });
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  // ignore: prefer_const_literals_to_create_immutables
+                  boxShadow: [
+                     const BoxShadow(
+                      color: Color(0x1a2155cd),
+                      offset: Offset(2, 3),
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset(
+                          'assets/images/money.png',
+                          height: 30,
+                        ),
+                        const SizedBox(width: 20),
+                        const Text(
+                          'Cash on Delivery',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Transform.scale(
+                      scale: 1.3,
+                      child: Radio(
+                        value: 1,
+                        groupValue: selectedRadio,
+                        activeColor: const Color(0x1a2155cd),
+                        fillColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.selected)) {
+                              return const Color(0xFF4E1B97);
+                            }
+                            return const Color(0xFF4E1B97);
+                          },
+                        ),
+                        onChanged: (value) {
+                          if (mounted) {
+                            setState(() {
+                              selectedRadio = value!;
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedRadio = 2;
+                      });
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  // ignore: prefer_const_literals_to_create_immutables
+                  boxShadow: [
+                    const BoxShadow(
+                      color: Color(0x1a2155cd),
+                      offset: Offset(2, 3),
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset('assets/images/rzp.png', height: 30),
+                        const SizedBox(width: 20),
+                        const Text(
+                          'Razorpay',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Transform.scale(
+                      scale: 1.3,
+                      child: Radio(
+                        value: 2,
+                        groupValue: selectedRadio,
+                        activeColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.selected)) {
+                              return const Color(0xFF4E1B97);
+                            }
+                            return const Color(0xFF4E1B97);
+                          },
+                        ),
+                        onChanged: (value) {
+                          if (mounted) {
+                            setState(() {
+                              selectedRadio = value!;
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                    ),
+                  ),
+                ],
+              ),
+              TextButton(
+                onPressed: () {
+                  // Call your payment method here
+                  payNow();
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color(0xFF4E1B97),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  minimumSize: Size(MediaQuery.of(context).size.width - 40, 50),
+                ),
+                child: const Text(
+                  'Confirm Payment',
+                  style: TextStyle(
+                    color: Color(0xFFFFFFFF),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Implement your payment method here
+  void payNow() {
+    // Implement your payment logic here
+    // For example, if using Razorpay, you can initiate payment like this:
+    final options = {
+      'key': 'YOUR_KEY_HERE',
+      'amount': 100, // Amount in smallest currency unit (e.g., 100 cents for $1)
+      'name': 'Venue Drive',
+      'description': 'Payment for tickets',
+      'prefill': {'contact': '1234567890', 'email': 'example@example.com'},
+      'external': {
+        'wallets': ['paytm']
+      }
+    };
+    try {
+      razorpay.open(options);
+    } catch (e) {
+      print('Error initiating payment: $e');
+    }
+  }
+}
+

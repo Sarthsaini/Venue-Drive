@@ -1,0 +1,24 @@
+buildscript {
+    ext.kotlin_version = '1.5.20' // Update this version to at least 1.5.20
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Update this line
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
