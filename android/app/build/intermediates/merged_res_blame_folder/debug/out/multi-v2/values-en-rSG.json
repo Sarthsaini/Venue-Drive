@@ -4,7 +4,7 @@
             "outputFile": "/Users/manpreetsingh/Development/Projects/venue_drive/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rSG/values-en-rSG.xml",
             "map": [
                 {
-                    "source": "/Users/manpreetsingh/.gradle/caches/transforms-3/5da20a34410be4f1567faabdfbadfb14/transformed/jetified-play-services-wallet-18.1.3/res/values-en-rSG/values.xml",
+                    "source": "/Users/manpreetsingh/.gradle/caches/transforms-3/e473664ba3db856a49bf6e6c22805c26/transformed/jetified-play-services-wallet-18.1.3/res/values-en-rSG/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

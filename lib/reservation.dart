@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:stripe_payment/stripe_payment.dart';
 import 'package:flutter/cupertino.dart';
@@ -108,41 +110,41 @@ String formatDate(DateTime dateTime) {
     });
   }
  Future<void> fetchData() async {
-  try {
-    var response = await https.get(Uri.parse('$baseUrl/data-table?venue_id=25'));
-    if (response.statusCode == 200) {
+  // try {
+  //   var response = await https.get(Uri.parse('$baseUrl/data-table?venue_id=25'));
+  //   if (response.statusCode == 200) {
       
-      var data = jsonDecode(response.body);
+  //     var data = jsonDecode(response.body);
 
     
-      if (data.containsKey('data') && data['data'] is List) {
+  //     if (data.containsKey('data') && data['data'] is List) {
       
-        for (var section in data['data']) {
+  //       for (var section in data['data']) {
         
-          var sectionName = section['section_name'];
-          var tables = section['tables'];
+  //         var sectionName = section['section_name'];
+  //         var tables = section['tables'];
 
           
-          List<String> tableNames = [];
-          for (var table in tables) {
-            tableNames.add(table['table_name']);
-          }
+  //         List<String> tableNames = [];
+  //         for (var table in tables) {
+  //           tableNames.add(table['table_name']);
+  //         }
 
          
-          _tableNamesBySection[sectionName] = tableNames;
-        }
+  //         _tableNamesBySection[sectionName] = tableNames;
+  //       }
 
        
-        setState(() {});
-      } else {
-        print('Unexpected data format: $data');
-      }
-    } else {
-      print('Failed to fetch data: ${response.statusCode}');
-    }
-  } catch (e) {
-    print('Error fetching data: $e');
-  }
+  //       setState(() {});
+  //     } else {
+  //       print('Unexpected data format: $data');
+  //     }
+  //   } else {
+  //     print('Failed to fetch data: ${response.statusCode}');
+  //   }
+  // } catch (e) {
+  //   print('Error fetching data: $e');
+  // }
 }
 @override
 void initState() {
@@ -154,51 +156,7 @@ void initState() {
 }
 
 
-Future<void> _submitBooking(BuildContext context) async {
-  try {
-    var venueId = 1;
-    var eventId = 1;
-    var url = "$baseUrl/booking";
-    var response = await https.post(
-      Uri.parse(url),
-      body: jsonEncode({
-        'venue_id': venueId,
-        'event_id': eventId,
-        'email': _email,
-        'phone': _phoneNumber,
-        'arrival_time': formatTimeOfDay(_selectedTime!),
-        'first_name': _firstName,
-        'last_name': _lastName,
-        'dob': formatDate(_selectedDOB!),
-        'no_of_seats': _totalGuests,
-        'location': _selectedSection,
-        'date': formatDate(_selectedDate!),
-        'booking_note': _selectedBookingNote,
-        'additionalNotes': _additionalNotes,
-      }),
-      headers: {'Content-Type': 'application/json'},
-    );
-    print('Response body: ${response.body}');
 
-    if (response.statusCode == 200) {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Booking successful')),
-      );
-    } else {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Booking failed')),
-      );
-    }
-  } catch (e) {
-    // ignore: use_build_context_synchronously
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Error submitting booking')),
-    );
-     print('Response: ${e}');
-  }
-}
 
 
   
@@ -757,76 +715,123 @@ Future<void> _submitBooking(BuildContext context) async {
     );
   }
  
+
 Future<void> _handlePayment(BuildContext context) async {
   try {
-    
     var generalSettingResponse = await https.get(Uri.parse('$baseUrl/generalsetting?venue_id=25'));
     if (generalSettingResponse.statusCode == 200) {
       var generalSettingData = jsonDecode(generalSettingResponse.body);
-      var onlinePaymentRequired = generalSettingData['online_payment_required'];
+      var paymentType = generalSettingData['payment_type'];
 
-      if (onlinePaymentRequired != null && onlinePaymentRequired is bool) {
-        if (onlinePaymentRequired) {
-         
-          PaymentMethod paymentMethod = await StripePayment.paymentRequestWithCardForm(
-            CardFormPaymentRequest(),
-          );
-          var paymentIntentResponse = await https.post(
-            Uri.parse('$baseUrl/create-payment-intent'),
-            body: jsonEncode({
-              'amount': '', 
-              'secretKey':'',
-            }),
-            headers: {'Content-Type': 'application/json'},
-          );
-
-          if (paymentIntentResponse.statusCode == 200) {
-            var paymentIntent = jsonDecode(paymentIntentResponse.body);
-            var clientSecret = paymentIntent['client_secret'];
-
-            var stripeResponse = await StripePayment.confirmPaymentIntent(
-              PaymentIntent(
-                clientSecret: clientSecret,
-                paymentMethodId: paymentMethod.id,
-              ),
-            );
-
-            if (stripeResponse.status == 'succeeded') {
-              
-              _submitBooking(context);
-            } else {
-             
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Payment failed')),
-              );
-            }
-          } else {
-            
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Failed to create payment intent')),
-            );
-          }
-        } else {
-          
-          await _submitBooking(context);
-        }
+      if (paymentType == 'Cash') {
+        await _submitBooking(context);
+      } else if (paymentType == 'Online by Stripe Payment Gateway') {
+        await _handleOnlinePayment(context);
       } else {
-        
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Online payment required value is invalid')),
+          SnackBar(content: Text('Invalid payment type')),
         );
       }
     } else {
-      
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to fetch general setting')),
       );
     }
   } catch (error) {
-    
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Error: $error')),
     );
+  }
+}
+
+Future<void> _handleOnlinePayment(BuildContext context) async {
+  // Handle online payment logic here
+  try {
+    PaymentMethod paymentMethod = await StripePayment.paymentRequestWithCardForm(
+      CardFormPaymentRequest(),
+    );
+    var paymentIntentResponse = await https.post(
+      Uri.parse('$baseUrl/create-payment-intent'),
+      body: jsonEncode({
+        'amount': '', // Set the amount according to your requirements
+        'secretKey': '',
+      }),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (paymentIntentResponse.statusCode == 200) {
+      var paymentIntent = jsonDecode(paymentIntentResponse.body);
+      var clientSecret = paymentIntent['client_secret'];
+
+      var stripeResponse = await StripePayment.confirmPaymentIntent(
+        PaymentIntent(
+          clientSecret: clientSecret,
+          paymentMethodId: paymentMethod.id,
+        ),
+      );
+
+      if (stripeResponse.status == 'succeeded') {
+        _submitBooking(context);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Payment failed')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to create payment intent')),
+      );
+    }
+  } catch (error) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Error: $error')),
+    );
+  }
+}
+
+Future<void> _submitBooking(BuildContext context) async {
+  try {
+    var venueId = 1;
+    var eventId = 1;
+    var url = "$baseUrl/booking";
+    var response = await https.post(
+      Uri.parse(url),
+      body: jsonEncode({
+        'venue_id': venueId,
+        'event_id': eventId,
+        'email': _email,
+        'phone': _phoneNumber,
+        'arrival_time': formatTimeOfDay(_selectedTime!),
+        'first_name': _firstName,
+        'last_name': _lastName,
+        'dob': formatDate(_selectedDOB!),
+        'no_of_seats': _totalGuests,
+        'location': _selectedSection,
+        'date': formatDate(_selectedDate!),
+        'booking_note': _selectedBookingNote,
+        'additionalNotes': _additionalNotes,
+      }),
+      headers: {'Content-Type': 'application/json'},
+    );
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 200) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Booking successful')),
+      );
+    } else {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Booking failed')),
+      );
+    }
+  } catch (e) {
+    // ignore: use_build_context_synchronously
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Error submitting booking')),
+    );
+     print('Response: ${e}');
   }
 }
 
@@ -905,13 +910,13 @@ Row(
         border: Border.all(color: Colors.white), 
       ),
       child:DropdownButtonFormField<String>(
-  decoration: InputDecoration(
+  decoration: const InputDecoration(
     labelText: "Table Selection",
     labelStyle: TextStyle(color: Colors.white),
     border: InputBorder.none,
   ),
   dropdownColor: Colors.grey[800],
-  style: TextStyle(color: Colors.white),
+  style: const TextStyle(color: Colors.white),
   value: _selectedTable,
   onChanged: (newValue) {
     setState(() {
@@ -955,13 +960,13 @@ const SizedBox(height: 10),
         border: Border.all(color: Colors.white), 
       ),
       child: DropdownButtonFormField<String>(
-  decoration: InputDecoration(
+  decoration: const InputDecoration(
     labelText: "Preffered Section",
     labelStyle: TextStyle(color: Colors.white),
     border: InputBorder.none,
   ),
   dropdownColor: Colors.grey[800],
-  style: TextStyle(color: Colors.white),
+  style: const TextStyle(color: Colors.white),
   value: _selectedSection,
   onChanged: _sectionDropdownEnabled ? (newValue) {
     setState(() {
