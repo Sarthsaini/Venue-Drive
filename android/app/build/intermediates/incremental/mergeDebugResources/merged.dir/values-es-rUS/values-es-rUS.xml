@@ -53,12 +53,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Abrir en el teléfono"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Acceder"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Acceder con Google"</string>
-    <string msgid="3260749812566568062" name="copy_toast_msg">"Se copió el vínculo al portapapeles"</string>
     <string name="error_icon_content_description">Error</string>
     <string name="exposed_dropdown_menu_content_description">Mostrar menú desplegable</string>
-    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Copiar vínculo"</string>
-    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Abrir en el navegador"</string>
-    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Compartir vínculo"</string>
     <string name="icon_content_description">Ícono de diálogo</string>
     <string name="item_view_role_description">Pestaña</string>
     <string name="material_clock_toggle_content_description">Selecciona a.m. o p.m.</string>
@@ -109,16 +105,5 @@
     <string name="password_toggle_content_description">Mostrar contraseña</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Buscar"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
-    <string name="stripe_3ds2_brand_amex">American Express</string>
-    <string name="stripe_3ds2_brand_discover">Discover</string>
-    <string name="stripe_3ds2_brand_mastercard">Mastercard</string>
-    <string name="stripe_3ds2_brand_visa">Visa</string>
-    <string name="stripe_3ds2_bzv_issuer_image_description">Imagen del emisor</string>
-    <string name="stripe_3ds2_bzv_payment_system_image_description">Imagen del sistema de pago</string>
-    <string name="stripe_3ds2_czv_whitelist_no_label">No</string>
-    <string name="stripe_3ds2_czv_whitelist_yes_label">Sí</string>
-    <string name="stripe_3ds2_hzv_cancel_label">Cancelar</string>
-    <string name="stripe_3ds2_hzv_header_label">Proceso de compra seguro</string>
-    <string name="stripe_3ds2_processing">Procesando\u2026</string>
     <string name="wallet_buy_button_place_holder">Comprar con Google</string>
 </resources>

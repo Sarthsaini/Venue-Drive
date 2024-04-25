@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           navigateRoute: DashboardPage(),
           duration: 3000,
           imageSize: 300,
-          imageSrc: 'assets/logo.png',
+          imageSrc: 'assets/images/venue.png',
           backgroundColor: const Color(0xFF000000),
         ),
       ),

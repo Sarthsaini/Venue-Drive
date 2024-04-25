@@ -1,0 +1,245 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.venue_drive"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="33" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/manpreetsingh/Development/Projects/venue_drive/android/app/src/debug/AndroidManifest.xml:6:5-66
+15-->/Users/manpreetsingh/Development/Projects/venue_drive/android/app/src/debug/AndroidManifest.xml:6:22-64
+16    <uses-permission android:name="android.permission.CAMERA" />
+16-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-65
+16-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-62
+17
+18    <uses-feature android:name="android.hardware.camera" />
+18-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-60
+18-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:19-57
+19
+20    <uses-permission android:name="android.permission.FLASHLIGHT" />
+20-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-69
+20-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:22-66
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+21-->[:connectivity] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/connectivity-3.0.6/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-79
+21-->[:connectivity] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/connectivity-3.0.6/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-76
+22
+23    <queries>
+23-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:10:5-39:15
+24        <intent>
+24-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:11:9-17:18
+25            <action android:name="android.intent.action.VIEW" />
+25-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:12:13-65
+25-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:12:21-62
+26
+27            <data
+27-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:14:13-16:38
+28                android:mimeType="*/*"
+28-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:15:17-39
+29                android:scheme="*" />
+29-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:16:17-35
+30        </intent>
+31        <intent>
+31-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:18:9-27:18
+32            <action android:name="android.intent.action.VIEW" />
+32-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:12:13-65
+32-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:12:21-62
+33
+34            <category android:name="android.intent.category.BROWSABLE" />
+34-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:21:13-74
+34-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:21:23-71
+35
+36            <data
+36-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:14:13-16:38
+37                android:host="pay"
+38                android:mimeType="*/*"
+38-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:15:17-39
+39                android:scheme="upi" />
+39-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:16:17-35
+40        </intent>
+41        <intent>
+41-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:28:9-30:18
+42            <action android:name="android.intent.action.MAIN" />
+42-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:29:13-65
+42-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:29:21-62
+43        </intent>
+44        <intent>
+44-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:31:9-35:18
+45            <action android:name="android.intent.action.SEND" />
+45-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:32:13-65
+45-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:32:21-62
+46
+47            <data android:mimeType="*/*" />
+47-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:14:13-16:38
+47-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:15:17-39
+48        </intent>
+49        <intent>
+49-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:36:9-38:18
+50            <action android:name="rzp.device_token.share" />
+50-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:37:13-61
+50-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:37:21-58
+51        </intent>
+52    </queries>
+53
+54    <uses-feature
+54-->[com.google.android.gms:play-services-maps:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/f0b92ad9d877cf86f0623471d3cdad32/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+55        android:glEsVersion="0x00020000"
+55-->[com.google.android.gms:play-services-maps:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/f0b92ad9d877cf86f0623471d3cdad32/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+56        android:required="true" />
+56-->[com.google.android.gms:play-services-maps:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/f0b92ad9d877cf86f0623471d3cdad32/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+57
+58    <application
+59        android:name="io.flutter.app.FlutterMultiDexApplication"
+60        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+60-->[androidx.core:core:1.6.0] /Users/manpreetsingh/.gradle/caches/transforms-3/de8cf2d93679ac72aa883ce5e817419a/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+61        android:debuggable="true"
+62        android:icon="@mipmap/ic_launcher"
+63        android:label="venue_drive"
+64        android:largeHeap="true"
+64-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-33
+65        android:theme="@style/Theme.AppCompat.NoActionBar" >
+65-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:9-59
+66        <activity
+67            android:name="com.example.venue_drive.MainActivity"
+68            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+69            android:exported="true"
+70            android:hardwareAccelerated="true"
+71            android:launchMode="singleTop"
+72            android:theme="@style/LaunchTheme"
+73            android:windowSoftInputMode="adjustResize" >
+74
+75            <!--
+76                 Specifies an Android theme to apply to this Activity as soon as
+77                 the Android process has started. This theme is visible to the user
+78                 while the Flutter UI initializes. After that, this theme continues
+79                 to determine the Window background behind the Flutter UI.
+80            -->
+81            <meta-data
+82                android:name="io.flutter.embedding.android.NormalTheme"
+83                android:resource="@style/NormalTheme" />
+84
+85            <intent-filter>
+86                <action android:name="android.intent.action.MAIN" />
+86-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:29:13-65
+86-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:29:21-62
+87
+88                <category android:name="android.intent.category.LAUNCHER" />
+89            </intent-filter>
+90        </activity>
+91        <!--
+92             Don't delete the meta-data below.
+93             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+94        -->
+95        <meta-data
+96            android:name="flutterEmbedding"
+97            android:value="2" />
+98
+99        <activity android:name="com.amolg.flutterbarcodescanner.BarcodeCaptureActivity" />
+99-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-91
+99-->[:flutter_barcode_scanner] /Users/manpreetsingh/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:19-88
+100
+101        <uses-library
+101-->[androidx.window:window:1.0.0-beta04] /Users/manpreetsingh/.gradle/caches/transforms-3/ac7b94d22498f803a922430782a3b417/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+102            android:name="androidx.window.extensions"
+102-->[androidx.window:window:1.0.0-beta04] /Users/manpreetsingh/.gradle/caches/transforms-3/ac7b94d22498f803a922430782a3b417/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+103            android:required="false" />
+103-->[androidx.window:window:1.0.0-beta04] /Users/manpreetsingh/.gradle/caches/transforms-3/ac7b94d22498f803a922430782a3b417/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+104        <uses-library
+104-->[androidx.window:window:1.0.0-beta04] /Users/manpreetsingh/.gradle/caches/transforms-3/ac7b94d22498f803a922430782a3b417/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+105            android:name="androidx.window.sidecar"
+105-->[androidx.window:window:1.0.0-beta04] /Users/manpreetsingh/.gradle/caches/transforms-3/ac7b94d22498f803a922430782a3b417/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+106            android:required="false" />
+106-->[androidx.window:window:1.0.0-beta04] /Users/manpreetsingh/.gradle/caches/transforms-3/ac7b94d22498f803a922430782a3b417/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+107
+108        <receiver
+108-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:42:9-49:20
+109            android:name="com.razorpay.RzpTokenReceiver"
+109-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:43:13-57
+110            android:exported="true" >
+110-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:44:13-36
+111            <intent-filter>
+111-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:46:13-48:29
+112                <action android:name="rzp.device_token.share" />
+112-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:37:13-61
+112-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:37:21-58
+113            </intent-filter>
+114        </receiver>
+115
+116        <activity
+116-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:51:9-59:20
+117            android:name="com.razorpay.CheckoutActivity"
+117-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:52:13-57
+118            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+118-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:53:13-83
+119            android:exported="false"
+119-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:54:13-37
+120            android:theme="@style/CheckoutTheme" >
+120-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:55:13-49
+121            <intent-filter>
+121-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:56:13-58:29
+122                <action android:name="android.intent.action.MAIN" />
+122-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:29:13-65
+122-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:29:21-62
+123            </intent-filter>
+124        </activity>
+125
+126        <meta-data
+126-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:61:9-63:58
+127            android:name="com.razorpay.plugin.googlepay_all"
+127-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:62:13-61
+128            android:value="com.razorpay.RzpGpayMerged" />
+128-->[com.razorpay:checkout:1.6.38] /Users/manpreetsingh/.gradle/caches/transforms-3/9da3c1d9091430440655906bd3ca3bf8/transformed/jetified-checkout-1.6.38/AndroidManifest.xml:63:13-55
+129
+130        <activity
+130-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:23:9-27:75
+131            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+131-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:24:13-93
+132            android:excludeFromRecents="true"
+132-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:25:13-46
+133            android:exported="false"
+133-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:26:13-37
+134            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+134-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:27:13-72
+135        <!--
+136            Service handling Google Sign-In user revocation. For apps that do not integrate with
+137            Google Sign-In, this service will never be started.
+138        -->
+139        <service
+139-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:33:9-36:110
+140            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+140-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:34:13-89
+141            android:exported="true"
+141-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:35:13-36
+142            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" /> <!-- Needs to be explicitly declared on P+ -->
+142-->[com.google.android.gms:play-services-auth:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/b9d5193840a41465ca30a0fedbff4de0/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:36:13-107
+143        <uses-library
+143-->[com.google.android.gms:play-services-maps:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/f0b92ad9d877cf86f0623471d3cdad32/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+144            android:name="org.apache.http.legacy"
+144-->[com.google.android.gms:play-services-maps:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/f0b92ad9d877cf86f0623471d3cdad32/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+145            android:required="false" />
+145-->[com.google.android.gms:play-services-maps:17.0.0] /Users/manpreetsingh/.gradle/caches/transforms-3/f0b92ad9d877cf86f0623471d3cdad32/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+146
+147        <activity
+147-->[com.google.android.gms:play-services-base:17.5.0] /Users/manpreetsingh/.gradle/caches/transforms-3/9efd2a9d043a393b658701bfb11ca610/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:23:9-26:75
+148            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+148-->[com.google.android.gms:play-services-base:17.5.0] /Users/manpreetsingh/.gradle/caches/transforms-3/9efd2a9d043a393b658701bfb11ca610/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:24:13-79
+149            android:exported="false"
+149-->[com.google.android.gms:play-services-base:17.5.0] /Users/manpreetsingh/.gradle/caches/transforms-3/9efd2a9d043a393b658701bfb11ca610/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:25:13-37
+150            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+150-->[com.google.android.gms:play-services-base:17.5.0] /Users/manpreetsingh/.gradle/caches/transforms-3/9efd2a9d043a393b658701bfb11ca610/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:26:13-72
+151
+152        <meta-data
+152-->[com.google.android.gms:play-services-basement:17.6.0] /Users/manpreetsingh/.gradle/caches/transforms-3/022d7b8d78ed8a6456622f7b97138e06/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:23:9-25:69
+153            android:name="com.google.android.gms.version"
+153-->[com.google.android.gms:play-services-basement:17.6.0] /Users/manpreetsingh/.gradle/caches/transforms-3/022d7b8d78ed8a6456622f7b97138e06/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:24:13-58
+154            android:value="@integer/google_play_services_version" />
+154-->[com.google.android.gms:play-services-basement:17.6.0] /Users/manpreetsingh/.gradle/caches/transforms-3/022d7b8d78ed8a6456622f7b97138e06/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:25:13-66
+155    </application>
+156
+157</manifest>

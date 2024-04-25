@@ -81,7 +81,7 @@ Future<void> fetchAllEvents() async {
 }
  else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to fetch event names')),
+          const SnackBar(content: Text('Failed to fetch event names')),
         );
       }
     } catch (e) {
@@ -120,12 +120,12 @@ Future<void> fetchEventData() async {
         print('response: $response');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Response body is empty')),
+          const SnackBar(content: Text('Response body is empty')),
         );
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to fetch data')),
+        const SnackBar(content: Text('Failed to fetch data')),
       );
     }
   } catch (e) {
@@ -165,18 +165,23 @@ void showAdmissionDetails(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
       
-        const Row(
+         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 50,
+            const SizedBox(height: 50,
             width: 30,),
-            Text(
-              'Cancel',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14.0,
-              ),
-            ),
+            GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context); // Close the bottom sheet
+                      },
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ),
             
           ],
         ),
@@ -563,104 +568,104 @@ void showAdmissionDetails(BuildContext context) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'TOTAL SALES',
                         style: TextStyle(
                           color: Color(0xFF828087),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             'Reservations ($_reservations)',
-                            style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
+                            style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Mins',
                             style: TextStyle(color: Colors.white),
                           ),
                           Text(
                             _minsReservations,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Total Spent',
                             style: TextStyle(color: Colors.white),
                           ),
                           Text(
                             _totalSpentReservations,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ],
                       ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Prepaid',
                       style: TextStyle(color: Colors.white),
                     ),
                     Text(
                       _prepaidReservations,
-                      style: TextStyle(color: Colors.green),
+                      style: const TextStyle(color: Colors.green),
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Admissions ($_admissions)',
-                      style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Total Spent',
                       style: TextStyle(color: Colors.white),
                     ),
                     Text(
                      _totalSpentAdmissions,
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Prepaid',
                       style: TextStyle(color: Colors.white),
                     ),
                     Text(
                       _prepaidAdmissions,
-                      style: TextStyle(color: Colors.green),
+                      style: const TextStyle(color: Colors.green),
                     ),
                   ],
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
               ],
             ),
           ),

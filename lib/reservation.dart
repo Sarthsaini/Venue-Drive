@@ -1,7 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:convert';
-import 'package:stripe_payment/stripe_payment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as https; 
@@ -110,48 +107,45 @@ String formatDate(DateTime dateTime) {
     });
   }
  Future<void> fetchData() async {
-  // try {
-  //   var response = await https.get(Uri.parse('$baseUrl/data-table?venue_id=25'));
-  //   if (response.statusCode == 200) {
+  try {
+    var response = await https.get(Uri.parse('$baseUrl/data-table?venue_id=25'));
+    if (response.statusCode == 200) {
       
-  //     var data = jsonDecode(response.body);
+      var data = jsonDecode(response.body);
 
     
-  //     if (data.containsKey('data') && data['data'] is List) {
+      if (data.containsKey('data') && data['data'] is List) {
       
-  //       for (var section in data['data']) {
+        for (var section in data['data']) {
         
-  //         var sectionName = section['section_name'];
-  //         var tables = section['tables'];
+          var sectionName = section['section_name'];
+          var tables = section['tables'];
 
           
-  //         List<String> tableNames = [];
-  //         for (var table in tables) {
-  //           tableNames.add(table['table_name']);
-  //         }
+          List<String> tableNames = [];
+          for (var table in tables) {
+            tableNames.add(table['table_name']);
+          }
 
          
-  //         _tableNamesBySection[sectionName] = tableNames;
-  //       }
+          _tableNamesBySection[sectionName] = tableNames;
+        }
 
        
-  //       setState(() {});
-  //     } else {
-  //       print('Unexpected data format: $data');
-  //     }
-  //   } else {
-  //     print('Failed to fetch data: ${response.statusCode}');
-  //   }
-  // } catch (e) {
-  //   print('Error fetching data: $e');
-  // }
+        setState(() {});
+      } else {
+        print('Unexpected data format: $data');
+      }
+    } else {
+      print('Failed to fetch data: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('Error fetching data: $e');
+  }
 }
 @override
 void initState() {
   super.initState();
-  StripePayment.setOptions(
-    StripeOptions(publishableKey: "YOUR_PUBLISHABLE_KEY_HERE"),
-  );
   fetchData();
 }
 
@@ -204,7 +198,7 @@ void initState() {
                     tooltip: 'Show Snackbar',
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('This is a snackbar')),
+                        const SnackBar(content: Text('This is a Calender')),
                       );
                     },
                   ),
@@ -715,79 +709,6 @@ void initState() {
     );
   }
  
-
-Future<void> _handlePayment(BuildContext context) async {
-  try {
-    var generalSettingResponse = await https.get(Uri.parse('$baseUrl/generalsetting?venue_id=25'));
-    if (generalSettingResponse.statusCode == 200) {
-      var generalSettingData = jsonDecode(generalSettingResponse.body);
-      var paymentType = generalSettingData['payment_type'];
-
-      if (paymentType == 'Cash') {
-        await _submitBooking(context);
-      } else if (paymentType == 'Online by Stripe Payment Gateway') {
-        await _handleOnlinePayment(context);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Invalid payment type')),
-        );
-      }
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to fetch general setting')),
-      );
-    }
-  } catch (error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: $error')),
-    );
-  }
-}
-
-Future<void> _handleOnlinePayment(BuildContext context) async {
-  // Handle online payment logic here
-  try {
-    PaymentMethod paymentMethod = await StripePayment.paymentRequestWithCardForm(
-      CardFormPaymentRequest(),
-    );
-    var paymentIntentResponse = await https.post(
-      Uri.parse('$baseUrl/create-payment-intent'),
-      body: jsonEncode({
-        'amount': '', // Set the amount according to your requirements
-        'secretKey': '',
-      }),
-      headers: {'Content-Type': 'application/json'},
-    );
-
-    if (paymentIntentResponse.statusCode == 200) {
-      var paymentIntent = jsonDecode(paymentIntentResponse.body);
-      var clientSecret = paymentIntent['client_secret'];
-
-      var stripeResponse = await StripePayment.confirmPaymentIntent(
-        PaymentIntent(
-          clientSecret: clientSecret,
-          paymentMethodId: paymentMethod.id,
-        ),
-      );
-
-      if (stripeResponse.status == 'succeeded') {
-        _submitBooking(context);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Payment failed')),
-        );
-      }
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to create payment intent')),
-      );
-    }
-  } catch (error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: $error')),
-    );
-  }
-}
 
 Future<void> _submitBooking(BuildContext context) async {
   try {
@@ -1345,7 +1266,7 @@ Padding(
             ElevatedButton(
   onPressed: () {
     if (_formKey.currentState!.validate()) {
-      _handlePayment(context); // Call payment method before submitting the booking
+      _submitBooking(context); // Call payment method before submitting the booking
     }
   },
   child: const Text("Book Ticket"),
